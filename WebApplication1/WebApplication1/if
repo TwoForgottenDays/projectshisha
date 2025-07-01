@@ -1,0 +1,43 @@
+string[] estudiantes = { "Alice", "Bob", "Charlie", "Calvo y Robsito" };
+int[] notasfarmeo = { 10, 9, 8, 7 };
+{
+foreach (string estudiante in estudiantes)
+    Console.WriteLine($"Estudiante: {estudiante}");
+}
+foreach (int nota in notasfarmeo)
+{
+    if (nota >= 8)
+    {
+        Console.WriteLine($"Nota aprobada: {nota}");
+    }
+    else
+    {
+        Console.WriteLine($"Nota reprobada: {nota}");
+    }
+}
+
+
+for (int i = 1; i >= 0; i++) 
+{
+    
+    if ( i % 3 == 0) 
+    {
+        Console.WriteLine("Es robsito: " + i);
+        continue; // Skip the rest of the loop for even numbers
+    }
+    {
+        if (i % 5 != 0)
+        {
+            Console.WriteLine("Es calvo: " + i);
+        }
+        if (i % 7 == 0)
+        {
+            Console.WriteLine("Es calvo y robosito: " + i);
+        }
+
+        if (i == 100)
+
+                break;
+    }
+}
+
