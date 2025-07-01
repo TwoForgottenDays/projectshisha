@@ -14,6 +14,7 @@ for (int i = 1; i >= 0; i++)
         if (i % 7 == 0)
         {
             Console.WriteLine("Es calvo y robosito: " + i);
+            Console.WriteLine("Es calvo y robosito: " + -i);
         }
 
         if (i == 100)
