@@ -1,24 +1,30 @@
-for (int i = 1; i >= 0; i++) 
-{
-    
-    if ( i % 3 == 0) 
-    {
-        Console.WriteLine("Es robsito: " + i);
-        continue; // Skip the rest of the loop for even numbers
-    }
-    {
-        if (i % 5 != 0)
-        {
-            Console.WriteLine("Es calvo: " + i);
-        }
-        if (i % 7 == 0)
-        {
-            Console.WriteLine("Es calvo y robosito: " + i);
-            Console.WriteLine("Es calvo y robosito: " + -i);
-        }
+string[,] corporate = 
+	{
+		{"Robert", "Bavin"}, {"Simon", "Bright"},
+		{"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
+		{"Sarah", "Delucchi"}, {"Sinan", "Ali"}};
 
-        if (i == 100)
+	string[,] external = 
+	{
+		{"Vinnie", "Ashton"}, {"Cody", "Dysart"},
+		{"Shay", "Lawrence"}, {"Daren", "Valdes"}
+	};
 
-                break;
-    }
-}
+	string externalDomain = "hayworth.com";
+
+	for (int i = 0; i < corporate.GetLength(0); i++) 
+	{
+		DisplayEmail(first: corporate[i,0], last: corporate[i,1]);
+	}
+
+	for (int i = 0; i < external.GetLength(0); i++) 
+	{
+		DisplayEmail(first: external[i,0], last: external[i,1], domain: externalDomain);
+	}
+
+	void DisplayEmail(string first, string last, string domain = "contoso.com") 
+	{
+		string email = first.Substring(0, 2) + last;
+		email = email.ToLower();
+		Console.WriteLine($"{email}@{domain}");
+	}
