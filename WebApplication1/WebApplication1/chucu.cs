@@ -1,63 +1,45 @@
-using System;
+string? readResult;
+int startIndex = 0;
+bool goodEntry = false;
 
-string[] pettingZoo = 
+int[] numbers = { 1, 2, 3, 4, 5 };
+
+// Display the array to the console.
+Console.Clear();
+Console.Write("\n\rThe 'numbers' array contains: { ");
+foreach (int number in numbers)
 {
-    "alpacas", "capybaras", "chickens", "ducks", "emus", "geese", 
-    "goats", "iguanas", "kangaroos", "lemurs", "llamas", "macaws", 
-    "ostriches", "pigs", "ponies", "rabbits", "sheep", "tortoises",
-};
-
-PlanSchoolVisit("School A");
-PlanSchoolVisit("School B", 3);
-PlanSchoolVisit("School C", 2);
-
-void PlanSchoolVisit(string schoolName, int groups = 6) 
-{
-    RandomizeAnimals(); 
-    string[,] group = AssignGroup(groups);
-    Console.WriteLine(schoolName);
-    PrintGroup(group);
+    Console.Write($"{number} ");
 }
 
-void RandomizeAnimals() 
+// To calculate a sum of array elements, 
+//  prompt the user for the starting element number.
+Console.WriteLine($"}}\n\r\n\rTo sum values 'n' through 5, enter a value for 'n':");
+while (goodEntry == false)
 {
-    Random random = new Random();
+    readResult = Console.ReadLine();
+    goodEntry = int.TryParse(readResult, out startIndex);
 
-    for (int i = 0; i < pettingZoo.Length; i++) 
+    if (startIndex > 5)
     {
-        int r = random.Next(i, pettingZoo.Length);
-
-        string temp = pettingZoo[r];
-        pettingZoo[r] = pettingZoo[i];
-        pettingZoo[i] = temp;
+        goodEntry = false;
+        Console.WriteLine("\n\rEnter an integer value between 1 and 5");
     }
 }
 
-string[,] AssignGroup(int groups = 6) 
+// Display the sum and then pause.
+Console.WriteLine($"\n\rThe sum of numbers {startIndex} through {numbers.Length} is: {SumValues(numbers, startIndex)}");
+
+Console.WriteLine("press Enter to exit");
+readResult = Console.ReadLine();
+
+// This method returns the sum of elements n through 5
+static int SumValues(int[] numbers, int n)
 {
-    string[,] result = new string[groups, pettingZoo.Length/groups];
-    int start = 0;
-
-    for (int i = 0; i < groups; i++) 
+    int sum = 0;
+    for (int i = n; i < numbers.Length; i++)
     {
-        for (int j = 0; j < result.GetLength(1); j++) 
-        {
-            result[i,j] = pettingZoo[start++];
-        }
+        sum += numbers[i];
     }
-
-    return result;
-}
-
-void PrintGroup(string[,] groups) 
-{
-    for (int i = 0; i < groups.GetLength(0); i++) 
-    {
-        Console.Write($"Group {i + 1}: ");
-        for (int j = 0; j < groups.GetLength(1); j++) 
-        {
-            Console.Write($"{groups[i,j]}  ");
-        }
-        Console.WriteLine();
-    }
+    return sum;
 }
